@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class RootConfig(AppConfig):
+class GalleryConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "root"
+    name = "gallery"

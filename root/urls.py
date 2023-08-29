@@ -5,4 +5,8 @@ app_name = 'root'
 
 urlpatterns = [
     path("",home,name="home"),
+    path("about",about,name="about"),
+    path("contact",contact,name="contact"),
+    path("gallery_detail", gallery_detail, name="gallery_detail"),
+    path("services",services,name="services"),
 ]

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block 'title' %}Trainers{% endblock 'title' %}
+{% block 'title' %}Gallery details{% endblock 'title' %}
 {% block 'content' %}
 
 
@@ -29,43 +29,47 @@
           <div class="slides-1 portfolio-details-slider swiper">
             <div class="swiper-wrapper align-items-center">
               <div class="swiper-slide">
-                <img src="{% static 'assets/img/gallery/gallery-8.jpg ' %}" alt="">
+                <img src={{galleries.image.url}} alt="">
               </div>
             </div>
           </div>
         </div>
 
         <div class="row justify-content-between gy-4 mt-4">
-
-          <div class="col-lg-8">
+          <div class="col-lg-8"> 
             <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
+              
+              <h2>{{galleries.title}}</h2>
               <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                {{galleries.content}}
               </p>
+
               <div class="testimonial-item">
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  {{client.description}}
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
                 <div>
-                  <img src="{% static 'assets/img/testimonials/testimonials-2.jpg ' %}" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
+                  <img src={{client.image.url}} class="testimonial-img" alt="">
+                  <h3>
+                  </h3>
+                  <h4>{{client.job}}</h4>
                 </div>
               </div>
 
             </div>
           </div>
-
           <div class="col-lg-3">
             <div class="portfolio-info">
               <h3>Project information</h3>
               <ul>
-                <li><strong>Category</strong> <span>Nature Photography</span></li>
-                <li><strong>Client</strong> <span>ASU Company</span></li>
-                <li><strong>Project date</strong> <span>01 March, 2022</span></li>
+                
+                {% for cat in galleries.category.all  %}
+                <li><strong>Category</strong> <span>{{ cat.name }}</span></li>
+                {% endfor %}
+                <li><strong>Client</strong> <span>{{galleries.client_company}}</span></li>
+                <li><strong>Project date</strong> <span>{{galleries.project_date|date:" d M Y"}}</span></li>
               </ul>
             </div>
           </div>
