@@ -15,15 +15,11 @@ def gallery_detail(request, id):
 
 def gallery(request, cat=None ):
     category = Category.objects.all()
-
-    if cat:
-        gallery= Gallery.objects.filter(category__name=cat)
-    else:
-        gallery= Gallery.objects.filter(status=True)
+    gallery= Gallery.objects.all()
 
     
     context = {
-        "gallery": gallery,
+        'gallery': gallery,
         'category': category,
     }
     return render(request, 'gallery/gallery.html', context=context)

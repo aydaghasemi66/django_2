@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from gallery.models import Client , Gallery
-from gallery.models import Category
+from gallery.models import *
+from .models import *
 from django.contrib import messages
 from .forms import ContactUsForm
 # Create your views here.
@@ -31,9 +31,13 @@ def gallery_detail(request):
 def services(request):
     clients= Client.objects.all()
     category= Category.objects.all()
+    services = Services.objects.filter(status=True)
+    prices=Prices.objects.all()
     context = {
         'category' : category,
         'clients': clients
+        ,'services': services
+        ,'prices': prices
     }
     return render(request,'root/services.html',context=context)
 
@@ -55,7 +59,16 @@ def contact(request):
         }
         return render(request,"root/contact.html",context=context)
 
-
+def gallery(request,cat=None):
+    category= Category.objects.all()
+    galleries = Gallery.objects.filter(category__name=cat)
+    gallery = Gallery.objects.all()
+    context = {
+        'gallery' : gallery,
+        'category' : category,
+        'galleries' : galleries
+    }
+    return render(request,'gallery/gallery.html',context=context)
 
 
         
