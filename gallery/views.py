@@ -13,16 +13,14 @@ def gallery_detail(request, id):
     }
     return render(request, 'gallery/gallery-single.html', context=context)
 
-def gallery(request, cat=None ):
-    category = Category.objects.all()
-    gallery= Gallery.objects.all()
-
-    
+def gallery(request,cat=None):
+    category= Category.objects.all()
+    gallery = Gallery.objects.filter(category__name=cat)
     context = {
-        'gallery': gallery,
-        'category': category,
+        'category' : category,
+        'gallery' : gallery
     }
-    return render(request, 'gallery/gallery.html', context=context)
+    return render(request,'gallery/gallery.html',context=context)
 
 
   

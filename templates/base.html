@@ -58,7 +58,7 @@
           <li class="dropdown"><a href="{% url 'root:gallery' %}"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               {% for cat in category %}
-              <li><a href={% url 'root:gallery_cat' cat=cat.name %}>{{cat.name}}</a></li>
+              <li><a href={% url 'gallery:gallery_cat' cat=cat.name %}>{{cat.name}}</a></li>
               {% endfor %}
 
             </ul>

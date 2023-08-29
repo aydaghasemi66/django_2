@@ -10,5 +10,5 @@ urlpatterns = [
     path("gallery_detail", gallery_detail, name="gallery_detail"),
     path("services",services,name="services"),
     path("gallery",gallery,name="gallery"),
-    path("category/<str:cat>",gallery ,name ="gallery_cat"),
+   
 ]
